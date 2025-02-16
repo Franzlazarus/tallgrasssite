@@ -12,3 +12,20 @@ a:hover {
     background-color: #99CCFF;
     color: black;
 }
+#logo {
+    transition: transform 0.2s ease-in-out;
+    display: block;
+    margin: 15px auto 0 auto; /* Negative margin to bring it closer */
+    width: 120px; /* Adjust width if needed */
+}
+
+#logo:hover {
+    transform: scale(1.1);
+}
+h1 {
+    font-size: 14pt;
+    font-weight: bold;
+    text-align: left;
+    margin-top: 0px; /* Vermindert de ruimte tussen het logo en de titel */
+    margin-bottom: 10px;
+}
