@@ -1,0 +1,14 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+a {
+    color: #99CCFF;
+    text-decoration: none;
+}
+a:hover {
+    background-color: #99CCFF;
+    color: black;
+}
