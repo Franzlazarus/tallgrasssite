@@ -5,38 +5,44 @@
     <style>
         body {
             font-family: "Times New Roman", serif;
-            background-color: black;
-            color: white;
-            text-align: center;
-            margin: 0;
+            background-color: white;
+            color: black;
+            text-align: left;
+            margin: 40px;
             padding: 20px;
+            max-width: 800px;
+            margin: auto;
         }
         p {
             font-size: 12pt;
-            margin: 10px auto;
-            width: 50%;
+            line-height: 1.4;
+            margin-bottom: 10px;
         }
-        a:link { color: Navy; }
-        a:hover {
-            background-color: #99CCFF;
+        a {
+            color: #0000EE;
             text-decoration: none;
-            color: black;
         }
-        a:visited { color: Gray; }
+        a:hover {
+            background-color: yellow;
+            text-decoration: none;
+        }
+        .header {
+            font-size: 14pt;
+            font-weight: normal;
+            margin-bottom: 20px;
+        }
+        .subheader {
+            font-size: 12pt;
+            font-weight: bold;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
-    <p>&nbsp;</p>
-    <p><strong>Welcome to Tall Grass</strong></p>
-    <p>&nbsp;</p>
-    <p>
-        Support us on <a href="#">Patreon</a> or with a one-time <a href="#">donation</a><br>
-        Follow us on <a href="#">Instagram</a>, <a href="#">Bandcamp</a>, <a href="#">YouTube</a><br>
-        Consider buying our <a href="#">merch</a><br>
-        Feel free to contact us at <a href="mailto:yourband@email.com">yourband@email.com</a><br>
-    </p>
-    <p>&nbsp;</p>
-    <p>Our latest release: <strong><a href="#">New Album Out Now</a></strong></p>
-    <p>&nbsp;</p>
+    <div class="header">Tall Grass</div>
+    <p>Follow us on <a href="https://www.instagram.com/tallgrass.band/">Instagram</a>,
+    <p>Consider buying our <a href="#">merch</a></p>
+    <p>Feel free to contact us at <a href="mailto:tallgrassbandband@gmail.com">tallgrassbandband@gmail.com</a></p>
+    <div class="subheader">First EP coming soon:</div>
 </body>
 </html>
