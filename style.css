@@ -1,31 +1,185 @@
+/* Algemene pagina-opmaak */
 body {
-    font-family: Arial, sans-serif;
-    background-color: black;
-    color: white;
-    text-align: center;
-}
-a {
-    color: #99CCFF;
-    text-decoration: none;
-}
-a:hover {
-    background-color: #99CCFF;
-    color: black;
-}
-#logo {
-    transition: transform 0.2s ease-in-out;
-    display: block;
-    margin: 15px auto 0 auto; /* Negative margin to bring it closer */
-    width: 120px; /* Adjust width if needed */
+    background-color: rgb(255, 255, 255);
+    margin: 0;
+    padding: 0;
+    font-family: "Times New Roman", serif; /* Behoud van je font, maar overweeg een moderne serif zoals 'Georgia' of een sans-serif zoals 'Helvetica Neue', Arial, of system-ui voor een strakkere look */
+    color: #333; /* Iets zachter dan puur zwart voor hoofdtekst kan rustiger zijn */
+    line-height: 1.6; /* Basis line-height voor betere leesbaarheid */
 }
 
+/* Logo bovenaan gecentreerd */
+#logo {
+    display: block;
+    margin: 60px auto 40px auto; /* Meer ruimte boven en onder het logo */
+    width: 240px; /* Of je gewenste grootte */
+    transition: transform 0.2s ease-in-out;
+}
 #logo:hover {
     transform: scale(1.1);
 }
-h1 {
-    font-size: 14pt;
+
+/* Links */
+a {
+    color: #007bff; /* Een standaard, helder blauw. #99CCFF kan wat flets zijn. */
+    text-decoration: none;
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out; /* Smooth transitie */
+}
+a:hover {
+    color: #0056b3; /* Donkerder blauw bij hover */
+    text-decoration: underline; /* Subtiele indicatie */
+    /* background-color: transparent; Verwijder achtergrond voor minimalisme, of maak het subtieler: */
+    /* background-color: #e6f2ff; Een heel lichtblauwe achtergrond */
+}
+
+/* Buitenste layout: zij-gifs en content */
+.layout-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px; /* Verkleinde gap als de focus meer op content ligt; pas aan indien nodig */
+    max-width: 1200px; /* Iets smaller voor een compactere feel, of behoud 1600px */
+    margin: 0 auto;
+    padding: 20px; /* Minder padding als content zelf padding heeft */
+    box-sizing: border-box;
+}
+
+/* Kolommen links/rechts met GIFs (grotendeels behouden) */
+.gif-column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    padding-top: 60px; /* Uitlijnen met content na logo + marge */
+    position: relative;
+    flex: 0 0 120px; /* Geef de kolom een vaste breedte zodat content niet springt */
+}
+
+.side-gif {
+    max-width: 120px;
+    height: auto;
+    display: block;
+    border-radius: 0px;
+    opacity: 0.0; /* gedeeltelijk transparant */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+}
+
+.side-gif:hover {
+    transform: scale(3.5);
+    opacity: 1;
+    z-index: 10;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+/* Hoofdinhoudsblok */
+.content {
+    background-color: white;
+    color: black; /* Of erf body color: inherit; */
+    padding: 20px 40px; /* Meer horizontale padding voor lucht */
+    max-width: 720px; /* Optimale leesbreedte voor tekst */
+    width: 100%;
+    box-sizing: border-box;
+    /* border: 1px solid #eee; Eventueel een hele lichte rand voor subtiele afbakening */
+}
+
+/* Subtitels */
+.subheader {
+    font-size: 1.6em; /* Duidelijk groter dan paragraaftekst, relatief aan body font-size */
+    /* Alternatief in pt: font-size: 18pt; */
     font-weight: bold;
-    text-align: left;
-    margin-top: 0px; /* Vermindert de ruimte tussen het logo en de titel */
-    margin-bottom: 10px;
+    margin-top: 40px; /* Meer ruimte boven een subkop */
+    margin-bottom: 15px; /* Ruimte onder subkop, voor de paragraaf */
+    color: #111; /* Iets donkerder voor meer contrast */
+}
+
+.subheader:first-child {
+    margin-top: 0; /* Geen extra marge voor de allereerste subkop in .content */
+}
+
+/* Paragraafstijl */
+p {
+    font-size: 1em; /* Basisgrootte, relatief aan body. Standaard browser is vaak 16px. */
+    /* Alternatief in pt: font-size: 12pt; (als je dat specifiek wilt) */
+    line-height: 1.7; /* Meer regelafstand voor leescomfort */
+    margin-bottom: 1.2em; /* Ruimte onderaan paragraaf, relatief aan font-size */
+    /* margin-bottom: 15px; als je pt gebruikt */
+}
+
+/* Specifieke stijlen voor elementen uit je screenshot voor betere structuur */
+/* Het is aan te raden om in je HTML classes toe te voegen aan deze secties */
+
+.event-poster, .content img { /* Als je een afbeelding hebt zoals de poster */
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto; /* Centreren en ruimte geven */
+    border: 1px solid #ddd; /* Subtiele rand */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Zachte schaduw */
+}
+
+/* Horizontale lijn voor duidelijke scheiding tussen secties, als je <hr> gebruikt */
+hr {
+    border: 0;
+    height: 1px;
+    background-color: #ccc; /* Lichte grijze lijn */
+    margin: 40px 0; /* Ruimte boven en onder de lijn */
+}
+
+/* Lijstjes (bijv. voor tourdata of leden) */
+ul.custom-list, ol.custom-list { /* Geef je lijsten een class, bv. <ul class="custom-list"> */
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 20px;
+}
+ul.custom-list li, ol.custom-list li {
+    padding: 5px 0;
+    border-bottom: 1px solid #eee; /* Subtiele lijn tussen list items */
+}
+ul.custom-list li:last-child, ol.custom-list li:last-child {
+    border-bottom: none;
+}
+
+
+/* Mobiele weergave (grotendeels behouden, maar padding aangepast) */
+@media (max-width: 900px) {
+    .gif-column {
+        display: none;
+    }
+
+    .layout-container {
+        flex-direction: column;
+        align-items: center; /* Centreer content op mobiel */
+        padding: 15px; /* Iets minder padding op mobiel */
+        gap: 20px;
+    }
+
+    .content {
+        max-width: 100%;
+        padding: 20px; /* Consistente padding voor content op mobiel */
+    }
+
+    #logo {
+        margin: 40px auto 30px auto; /* Aanpassing marges voor mobiel */
+    }
+
+    .subheader {
+        font-size: 1.4em; /* Iets kleinere subkop op mobiel */
+        margin-top: 30px;
+    }
+
+    p {
+        font-size: 0.95em; /* Iets kleinere tekst op mobiel indien nodig */
+        line-height: 1.6;
+    }
+}
+main.content section {
+    border-top: none !important; /* Verwijder eventuele bovenrand */
+    border-bottom: none !important; /* Verwijder eventuele onderrand */
+    /* Als er een algemene 'border' was, specifiek uitschakelen: */
+    border: none !important; 
 }
