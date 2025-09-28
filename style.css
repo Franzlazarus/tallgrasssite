@@ -183,3 +183,29 @@ main.content section {
     /* Als er een algemene 'border' was, specifiek uitschakelen: */
     border: none !important; 
 }
+
+.merch-photo {
+  max-width: 300px;
+  margin: 10px;
+  border: 1px solid #ccc;
+}
+/* Hover-only bottom image */
+#hover-image-container {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;              /* hidden by default */
+  z-index: 1000;
+  pointer-events: none;       /* don't block hover */
+}
+
+#hover-image-container img {
+  max-width: 260px;           /* make it small */
+  height: auto;
+  width: 100%;
+}
+
+.show-hover-image #hover-image-container {
+  display: block;
+}

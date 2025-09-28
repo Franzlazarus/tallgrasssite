@@ -6,6 +6,34 @@
   <title>Tall Grass</title>
   <link rel="stylesheet" href="style.css">
 </head>
+<script>
+(function() {
+  const root = document.documentElement;
+
+  function canScroll() {
+    return (root.scrollHeight - window.innerHeight) > 10; // only if page is scrollable
+  }
+
+  function atBottom() {
+    const threshold = 2; // pixels from absolute bottom
+    return (window.innerHeight + window.pageYOffset) >= (root.scrollHeight - threshold);
+  }
+
+  function update() {
+    if (canScroll() && atBottom()) {
+      document.body.classList.add('show-hover-image');
+    } else {
+      document.body.classList.remove('show-hover-image');
+    }
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  document.addEventListener('DOMContentLoaded', update);
+  window.addEventListener('load', update);
+  update();
+})();
+</script>
 <body>
 
   <header>
@@ -48,6 +76,7 @@
           <li>28 februari, De Flux, ZAANDAM.</li>
           <li>7 maart, De Richel, AMSTERDAM</li>
           <li>19 juli, <a href="https://www.haltpop.nl/lineup.html" target="_blank" rel="noopener noreferrer">Haltpop Festival</a>, ZAANDAM</li>
+          <li>25 oktober, De Nieuwe Anita, AMSTERDAM</li>
         </ul>
       </section>
 
@@ -63,7 +92,19 @@
       </section>
 
       <section id="media" aria-labelledby="media-heading">
-        <h2 id="media-heading">Posters & Merch</h2>
+        <h2 id="media-heading">Ons Prachtige Shirt. Ontworpen door <a href="https://zwiercornelissen.nl/">Zwier Cornelissen</a></h2>
+          <!-- T-shirt foto’s -->
+        <figure>
+          <img src="images/nicky1.jpeg"
+              alt="Tall Grass T-shirt voorkant"
+              class="merch-photo">
+        </figure>
+
+        <figure>
+          <img src="images/nicky2.jpeg"
+              alt="Tall Grass T-shirt achterkant"
+              class="merch-photo">
+        </figure>
         <figure>
           <img src="images/een_avond_verboden.png" alt="Poster voor Een Avond Die Verboden Zou Moeten Worden met bandleden in kostuums" class="event-poster">
         </figure>
@@ -88,6 +129,10 @@
       <img src="images/Gifjes/webp/DSC01190 GIF.webp" class="side-gif" alt="">
     </aside>
 
+  </div>
+
+  <div id="hover-image-container" title="Tall Grass wenst u een smakelijk eten">
+    <img src="images/tallgrasswenstueensmakelijketen.jpg" alt="Tall Grass wenst u een smakelijk eten">
   </div>
 
 </body>
