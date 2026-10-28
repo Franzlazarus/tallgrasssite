@@ -1,4 +1,4 @@
-import {mount} from './form-renderer.js';
+import {mount} from './form-renderer.js?v=concert-checkbox';
 const apiBase=location.hostname==='127.0.0.1'?'http://127.0.0.1:5178':'https://tall-grass-ep-shirt.franzlazarus.chatgpt.site';
 const root=document.querySelector('#form');
 let config;
