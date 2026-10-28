@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tall Grass</title>
+  <meta name="description" content="Tall Grass, band uit Amsterdam. EP-releaseparty op 20 november 2026 aan Papaverhoek 27, Amsterdam-Noord. Boekingen: info@tallgrass.band.">
   <link rel="stylesheet" href="style.css">
 </head>
 <script>
@@ -20,6 +21,7 @@
   }
 
   function update() {
+    if (!document.body) return;
     if (canScroll() && atBottom()) {
       document.body.classList.add('show-hover-image');
     } else {
@@ -62,26 +64,40 @@
       <section id="intro">
         <p>Volg ons op <a href="https://www.instagram.com/tallgrass.band/">Instagram</a>.</p>
         <p>Voor merchandise, stuur ons een e-mail of een DM.</p>
-        <p>E-mail: <a href="mailto:tallgrassbandband@gmail.com">tallgrassbandband@gmail.com</a></p>
+        <p>Boekingen &amp; contact: <a href="mailto:info@tallgrass.band">info@tallgrass.band</a></p>
       </section>
 
       <section id="ep-info">
-        <h2>First EP coming soon</h2>
+        <h2>EP-releaseparty — 20 november</h2>
+        <p>Op <strong><time datetime="2026-11-20">vrijdag 20 november 2026</time></strong> vieren we de release van onze EP met een optreden aan <strong>Papaverhoek 27, Amsterdam-Noord</strong>.</p>
+        <p>Meer informatie over aanvang en toegang volgt. Volg de <a href="https://www.instagram.com/tallgrass.band/reel/DeMLuOwNY67/">aankondiging op Instagram</a> voor updates.</p>
       </section>
 
       <section id="tour-dates" aria-labelledby="tour-dates-heading">
-        <h2 id="tour-dates-heading">Dates</h2>
+        <h2 id="tour-dates-heading">Aankomende optredens</h2>
+        <ul class="custom-list">
+          <li><time datetime="2026-11-20">20 november 2026</time> — <a href="#ep-info">EP-releaseparty</a>, Papaverhoek 27, Amsterdam-Noord</li>
+        </ul>
+        <details>
+          <summary>Eerdere optredens</summary>
+          <h3>2026</h3>
+          <ul class="custom-list">
+            <li><time datetime="2026-02-12">12 februari</time> — Cinetol, Amsterdam. Met A Daisy en Paperview.</li>
+          </ul>
+          <h3>2025</h3>
         <ul class="custom-list">
           <li>27 februari, Skek, AMSTERDAM. Start 22:00 uur</li>
           <li>28 februari, De Flux, ZAANDAM.</li>
           <li>7 maart, De Richel, AMSTERDAM</li>
           <li>19 juli, <a href="https://www.haltpop.nl/lineup.html" target="_blank" rel="noopener noreferrer">Haltpop Festival</a>, ZAANDAM</li>
-          <li>25 oktober, De Nieuwe Anita, AMSTERDAM</li>
+          <li>27 september, De Kromme Haring, UTRECHT. Met Idle Thumbs.</li>
+          <li>25 oktober, De Nieuwe Anita, AMSTERDAM. Met Cargo Cult.</li>
         </ul>
+        </details>
       </section>
 
       <section id="band-members" aria-labelledby="band-members-heading">
-        <h2 id="band-members-heading">Members</h2>
+        <h2 id="band-members-heading">Bandleden</h2>
         <ul class="custom-list">
           <li>Kai Strobbe - Drums</li>
           <li>Timo Veraart - Guitar</li>
@@ -106,9 +122,12 @@
               alt="Tall Grass T-shirt achterkant"
               class="merch-photo">
         </figure>
-        <figure>
-          <img src="images/een_avond_verboden.png" alt="Poster voor Een Avond Die Verboden Zou Moeten Worden met bandleden in kostuums" class="event-poster">
-        </figure>
+        <details>
+          <summary>Archief: Een Avond Die Verboden Zou Moeten Worden</summary>
+          <figure>
+            <img src="images/een_avond_verboden.png" alt="Archiefposter voor Een Avond Die Verboden Zou Moeten Worden met bandleden in kostuums" class="event-poster">
+          </figure>
+        </details>
       </section>
     </main>
 
