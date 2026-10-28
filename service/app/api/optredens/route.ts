@@ -1,0 +1,8 @@
+import {z} from "zod";
+import {isNotNull} from "drizzle-orm";
+import {getDb} from "../../../db";
+import {gigSubscribers} from "../../../db/schema";
+import {response,preflight,allowedOrigin,readJson} from "../../../lib/http";
+const schema=z.object({email:z.string().trim().email().max(254),consent:z.literal(true),website:z.string().max(1000).optional()});
+export const OPTIONS=preflight;
+export async function POST(request:Request){if(!allowedOrigin(request))return response(request,{error:"Ververs de pagina en probeer opnieuw."},403);let raw;try{raw=await readJson(request,4000);}catch{return response(request,{error:"Ongeldig formulier."},400);}const p=schema.safeParse(raw);if(!p.success)return response(request,{error:"Vul je e-mailadres in en geef toestemming."},400);if(p.data.website)return response(request,{ok:true});try{const token=crypto.randomUUID()+crypto.randomUUID();const rows=await getDb().insert(gigSubscribers).values({id:crypto.randomUUID(),email:p.data.email.toLowerCase(),createdAt:new Date().toISOString(),consent:"Stuur me een mail als jullie optreden — 2026-10-28",unsubscribeToken:token}).onConflictDoUpdate({target:gigSubscribers.email,set:{unsubscribeToken:token,unsubscribedAt:null,createdAt:new Date().toISOString(),consent:"Stuur me een mail als jullie optreden — 2026-10-28"},setWhere:isNotNull(gigSubscribers.unsubscribedAt)}).returning({id:gigSubscribers.id});return response(request,{ok:true,unsubscribe:rows.length?`https://tall-grass-ep-shirt.franzlazarus.chatgpt.site/afmelden?token=${token}`:null});}catch{return response(request,{error:"Opslaan lukt even niet. Probeer opnieuw."},503);}}

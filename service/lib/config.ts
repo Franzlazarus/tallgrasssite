@@ -1,0 +1,11 @@
+import {z} from "zod";
+const line=z.string().trim().min(1).max(240);
+export const configSchema=z.object({
+ title:line,intro:z.string().trim().min(1).max(800),success:z.string().trim().min(1).max(500),
+ epLabel:line,shirtLabel:line,nameLabel:line,emailLabel:line,epQuantityLabel:line,epBudgetLabel:line,shirtQuantityLabel:line,shirtSizeLabel:line,shirtBudgetLabel:line,notesLabel:line,submitLabel:line,
+ epEnabled:z.boolean(),shirtEnabled:z.boolean(),epBudgetEnabled:z.boolean(),shirtBudgetEnabled:z.boolean(),notesEnabled:z.boolean(),
+ epPrices:z.array(z.number().int().min(1).max(500)).min(1).max(15),shirtPrices:z.array(z.number().int().min(1).max(500)).min(1).max(15),sizes:z.array(line).min(1).max(15),
+ extraQuestions:z.array(z.object({id:z.string().regex(/^[a-z0-9_-]{1,50}$/),label:line,type:z.enum(["text","select"]),options:z.array(line).max(15),required:z.boolean()})).max(10)
+}).superRefine((v,c)=>{if(!v.epEnabled&&!v.shirtEnabled)c.addIssue({code:"custom",message:"Laat minimaal één product aan staan."});if(new Set(v.extraQuestions.map(q=>q.id)).size!==v.extraQuestions.length)c.addIssue({code:"custom",message:"Elke vraag moet een unieke ID hebben."});for(const q of v.extraQuestions)if(q.type==="select"&&q.options.length<2)c.addIssue({code:"custom",message:"Een keuzevraag heeft minimaal twee opties nodig."});});
+export type Config=z.infer<typeof configSchema>;
+export const defaultConfig:Config={title:"EP & shirt",intro:"Interesse in onze EP op vinyl of een Tall Grass-shirt? Meld je vrijblijvend aan. Je bestelt of betaalt nog niets.",success:"Bedankt! Je staat op de lijst. Bij voldoende interesse mailen we je de definitieve prijs en bestellink.",epLabel:"De EP op vinyl",shirtLabel:"Een Tall Grass-shirt",nameLabel:"Voornaam",emailLabel:"E-mailadres",epQuantityLabel:"Aantal exemplaren",epBudgetLabel:"Wat wil je maximaal betalen per EP?",shirtQuantityLabel:"Aantal shirts",shirtSizeLabel:"Je gebruikelijke maat",shirtBudgetLabel:"Wat wil je maximaal betalen per shirt?",notesLabel:"Maatverdeling of andere wensen (optioneel)",submitLabel:"Zet mij op de lijst",epEnabled:true,shirtEnabled:true,epBudgetEnabled:true,shirtBudgetEnabled:true,notesEnabled:true,epPrices:[20,25,30,35,40,45,50],shirtPrices:[20,25,30,35,40,45,50],sizes:["XS","S","M","L","XL","XXL","Anders","Weet ik nog niet"],extraQuestions:[]};
